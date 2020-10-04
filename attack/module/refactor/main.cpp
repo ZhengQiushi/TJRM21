@@ -7,7 +7,8 @@ int main()
     std::thread auto_aim(&ThreadControl::AutoAim, &ThreadController);
     std::thread communicate(&ThreadControl::Communicate, &ThreadController);
     
+    communicate.detach();
     auto_aim.join();
-    communicate.join();
+    
     return 0;
 }
